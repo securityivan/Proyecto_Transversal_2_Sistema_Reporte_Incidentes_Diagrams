@@ -37,12 +37,6 @@
       </Constructors>
       <Methods/>
     </Class>
-    <Enum name="Especialidad" package="" visibility="public" xPosition="242.0" yPosition="324.0">
-      <Literals>
-        <Literal name="idEspecialidad"/>
-        <Literal name="nombre"/>
-      </Literals>
-    </Enum>
     <Class name="areaComercial" package="" visibility="public" xPosition="716.0" yPosition="13.0">
       <Fields>
         <Field name="servicios" type="Servicios" visibility="private"/>
@@ -85,6 +79,22 @@
       <Constructors/>
       <Methods/>
     </Class>
+    <Interface name="gestorIncidentes" package="" visibility="public" xPosition="477.0" yPosition="187.0">
+      <Methods>
+        <Method name="gestionarIncidentes" returnType="void" visibility="public"/>
+        <Method name="asignarIncidente" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Enum name="Especialidad" package="" visibility="public" xPosition="242.0" yPosition="362.0">
+      <Literals>
+        <Literal name="idEspecialidad"/>
+        <Literal name="software"/>
+        <Literal name="hardware"/>
+        <Literal name="redes"/>
+        <Literal name="mantenimiento"/>
+        <Literal name="instalaciones"/>
+      </Literals>
+    </Enum>
     <Enum name="Servicios" package="" visibility="public" xPosition="712.0" yPosition="261.0">
       <Literals>
         <Literal name="Internet"/>
@@ -92,23 +102,17 @@
         <Literal name="Cablevision"/>
       </Literals>
     </Enum>
-    <Interface name="gestorIncidentes" package="" visibility="public" xPosition="477.0" yPosition="187.0">
-      <Methods>
-        <Method name="gestionarIncidentes" returnType="void" visibility="public"/>
-        <Method name="asignarIncidente" returnType="void" visibility="public"/>
-      </Methods>
-    </Interface>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Tecnico" target="gestorIncidentes"/>
-    <HasRelation name="Tiene" source="Persona" target="Incidente" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <UseRelation name="Usa" source="rr_HH" target="Tecnico" sourceCardinality="1..*" targetCardinality="1..1"/>
-    <UseRelation name="Usa" source="areaComercial" target="Cliente" sourceCardinality="1..*" targetCardinality="1..1"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Cliente" target="gestorIncidentes"/>
-    <IsRelation name="is" source="Tecnico" target="Persona"/>
-    <HasRelation name="Tiene" source="Tecnico" target="Especialidad" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <HasRelation name="Tiene" source="areaComercial" target="Servicios" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
     <IsRelation name="is" source="Cliente" target="Persona"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Tecnico" target="gestorIncidentes"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Cliente" target="gestorIncidentes"/>
+    <UseRelation name="Usa" source="areaComercial" target="Cliente" sourceCardinality="1..*" targetCardinality="1..1"/>
+    <HasRelation name="Tiene" source="Tecnico" target="Especialidad" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <IsRelation name="is" source="Tecnico" target="Persona"/>
     <UseRelation name="Usa" source="mesa_Ayuda" target="Incidente" sourceCardinality="1..*" targetCardinality="1..1"/>
+    <HasRelation name="Tiene" source="Persona" target="Incidente" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="Tiene" source="areaComercial" target="Servicios" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <UseRelation name="Usa" source="rr_HH" target="Tecnico" sourceCardinality="1..*" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
