@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Empresa Soporte">
+  <ClassDiagramComponents>
+    <Class name="Persona" package="" visibility="public" xPosition="23.0" yPosition="13.0">
+      <Fields>
+        <Field name="idPersona" type="int" visibility="private"/>
+        <Field name="dniPersona" type="int" visibility="private"/>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="lastName" type="String" visibility="private"/>
+        <Field name="cellNumber" type="int" visibility="private"/>
+        <Field name="address" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="rr_HH" package="" visibility="public" xPosition="467.0" yPosition="328.0">
+      <Fields>
+        <Field name="tecnicos" type="Tecnico" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="agregarTecnico" returnType="void" visibility="public"/>
+        <Method name="eliminarTecnico" returnType="void" visibility="public"/>
+        <Method name="modificarTecnico" returnType="void" visibility="public"/>
+        <Method name="tecnicos" returnType="List" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Tecnico" package="" visibility="public" xPosition="236.0" yPosition="153.0">
+      <Fields>
+        <Field name="idTec" type="int" visibility="private"/>
+        <Field name="especialidad" type="Especialidad" visibility="private"/>
+        <Field name="persona" type="Persona" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Enum name="Especialidad" package="" visibility="public" xPosition="242.0" yPosition="324.0">
+      <Literals>
+        <Literal name="idEspecialidad"/>
+        <Literal name="nombre"/>
+      </Literals>
+    </Enum>
+    <Class name="areaComercial" package="" visibility="public" xPosition="716.0" yPosition="13.0">
+      <Fields>
+        <Field name="servicios" type="Servicios" visibility="private"/>
+        <Field name="cliente" type="Cliente" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="nuevoCliente" returnType="void" visibility="public"/>
+        <Method name="deleteCliente" returnType="void" visibility="public"/>
+        <Method name="updateCliente" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="mesa_Ayuda" package="" visibility="public" xPosition="712.0" yPosition="424.0">
+      <Fields>
+        <Field name="idIncidente" type="int" visibility="private"/>
+        <Field name="nombreIncidente" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="nuevoIncidente" returnType="void" visibility="public"/>
+        <Method name="borrarIncidente" returnType="void" visibility="public"/>
+        <Method name="modificarIncidente" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Incidente" package="" visibility="public" xPosition="23.0" yPosition="434.0">
+      <Fields>
+        <Field name="idIncidente" type="int" visibility="private"/>
+        <Field name="nombreIncidente" type="String" visibility="private"/>
+        <Field name="descripcion" type="String" visibility="private"/>
+        <Field name="fecha" type="LocalDate" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Cliente" package="" visibility="public" xPosition="456.0" yPosition="32.0">
+      <Fields>
+        <Field name="persona" type="Persona" visibility="private"/>
+        <Field name="idCliente" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Enum name="Servicios" package="" visibility="public" xPosition="712.0" yPosition="261.0">
+      <Literals>
+        <Literal name="Internet"/>
+        <Literal name="Telefonia"/>
+        <Literal name="Cablevision"/>
+      </Literals>
+    </Enum>
+    <Interface name="gestorIncidentes" package="" visibility="public" xPosition="477.0" yPosition="187.0">
+      <Methods>
+        <Method name="gestionarIncidentes" returnType="void" visibility="public"/>
+        <Method name="asignarIncidente" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Tecnico" target="gestorIncidentes"/>
+    <HasRelation name="Tiene" source="Persona" target="Incidente" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <UseRelation name="Usa" source="rr_HH" target="Tecnico" sourceCardinality="1..*" targetCardinality="1..1"/>
+    <UseRelation name="Usa" source="areaComercial" target="Cliente" sourceCardinality="1..*" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Cliente" target="gestorIncidentes"/>
+    <IsRelation name="is" source="Tecnico" target="Persona"/>
+    <HasRelation name="Tiene" source="Tecnico" target="Especialidad" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="Tiene" source="areaComercial" target="Servicios" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <IsRelation name="is" source="Cliente" target="Persona"/>
+    <UseRelation name="Usa" source="mesa_Ayuda" target="Incidente" sourceCardinality="1..*" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
